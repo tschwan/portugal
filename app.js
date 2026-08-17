@@ -1822,12 +1822,12 @@ class TravelApp {
                             <div class="roadtrip-summary-info">
                                 <span class="roadtrip-summary-icon">🗺️</span>
                                 <div class="roadtrip-summary-texts">
-                                    <strong class="roadtrip-summary-title">${stepCount} Roadtrip-Etappen & Zwischenstopps</strong>
-                                    <span class="roadtrip-summary-sub">Klicken zum Aufklappen der genauen Uhrzeiten & Highlights</span>
+                                    <strong class="roadtrip-summary-title">${stepCount} Roadtrip-Etappen & Stopps</strong>
+                                    <span class="roadtrip-summary-sub">Uhrzeiten, Highlights & Route ansehen</span>
                                 </div>
                             </div>
                             <div class="roadtrip-summary-badge">
-                                <span>Etappen ansehen</span>
+                                <span class="roadtrip-badge-label">Etappen ansehen</span>
                                 <svg class="roadtrip-chevron" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
                             </div>
                         </summary>
@@ -1848,7 +1848,8 @@ class TravelApp {
                                         ${step.mapsQuery ? `
                                             <div class="timeline-step-actions">
                                                 <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(step.mapsQuery)}" target="_blank" rel="noopener noreferrer" class="timeline-maps-btn">
-                                                    <span>Maps: ${step.title}</span>
+                                                    <svg class="svg-icon-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                                                    <span>${step.title}</span>
                                                     <svg class="svg-icon-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                                                 </a>
                                             </div>
@@ -1883,6 +1884,23 @@ class TravelApp {
                 </a>
             ` : '';
 
+            // Card footer (omitted for multi-stop roadtrips to avoid confusion, since every stop has its own precise map link)
+            const cardBarHtml = spot.category !== 'roadtrip' ? `
+                <div class="spot-card-bar">
+                    <div class="spot-location-info">
+                        <svg class="svg-icon-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                        <span>${spot.location || 'Portugal'}</span>
+                    </div>
+                    <div class="spot-actions-group">
+                        ${webBtnHtml}
+                        <a href="${mapsUrl}" target="_blank" rel="noopener noreferrer" class="maps-open-pill">
+                            <span>Google Maps</span>
+                            <svg class="svg-icon-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </a>
+                    </div>
+                </div>
+            ` : '';
+
             html += `
                 <article class="spot-card" id="card-${spot.id}">
                     ${mediaHtml}
@@ -1894,19 +1912,7 @@ class TravelApp {
                         ${sectionsHtml}
                         ${timelineHtml}
                     </div>
-                    <div class="spot-card-bar">
-                        <div class="spot-location-info">
-                            <svg class="svg-icon-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                            <span>${spot.location || 'Portugal'}</span>
-                        </div>
-                        <div class="spot-actions-group">
-                            ${webBtnHtml}
-                            <a href="${mapsUrl}" target="_blank" rel="noopener noreferrer" class="maps-open-pill">
-                                <span>Google Maps</span>
-                                <svg class="svg-icon-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                            </a>
-                        </div>
-                    </div>
+                    ${cardBarHtml}
                 </article>
             `;
         });
