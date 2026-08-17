@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#15394b">
+    <meta name="description" content="Portugal Roadtrip 2026 – Dein kuratierter Reisebegleiter für Algarve & Alentejo.">
+    <title>Portugal 2026 — Roadtrip & Küstenguide</title>
+    <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="app-header" id="appHeader">
+        <div class="header-inner">
+            <div class="brand-group">
+                <span class="brand-badge">ROADTRIP 2026</span>
+                <h1 class="brand-name">Portugal</h1>
+                <span class="brand-sub">Alentejo & Algarve • 14 Nächte</span>
+            </div>
+            <div class="header-trip-dates">
+                <span class="dates-pill">04. – 18.09.2026</span>
+            </div>
+        </div>
+        <!-- 5-Station Grid Segmented Bar -->
+        <nav class="station-segmented-bar" id="stationNav" aria-label="Stationen Navigation">
+            <button class="station-pill active" data-station="station-1" id="tabStation1">
+                <span class="pill-number">01</span>
+                <span class="pill-text-group">
+                    <strong class="pill-title">Anreise</strong>
+                    <small class="pill-dates">04.–05.09.</small>
+                </span>
+            </button>
+            <button class="station-pill" data-station="station-2" id="tabStation2">
+                <span class="pill-number">02</span>
+                <span class="pill-text-group">
+                    <strong class="pill-title">Zambujeira</strong>
+                    <small class="pill-dates">05.–09.09.</small>
+                </span>
+            </button>
+            <button class="station-pill" data-station="station-3" id="tabStation3">
+                <span class="pill-number">03</span>
+                <span class="pill-text-group">
+                    <strong class="pill-title">Luz & Lagos</strong>
+                    <small class="pill-dates">09.–13.09.</small>
+                </span>
+            </button>
+            <button class="station-pill" data-station="station-4" id="tabStation4">
+                <span class="pill-number">04</span>
+                <span class="pill-text-group">
+                    <strong class="pill-title">Olhos de Água</strong>
+                    <small class="pill-dates">13.–18.09.</small>
+                </span>
+            </button>
+            <button class="station-pill" data-station="station-5" id="tabStation5">
+                <span class="pill-number">05</span>
+                <span class="pill-text-group">
+                    <strong class="pill-title">Abreise</strong>
+                    <small class="pill-dates">18.09.</small>
+                </span>
+            </button>
+        </nav>
+    </header>
+    <main class="main-wrapper" id="mainContent">
+        <!-- Magazine Cover Hero Section -->
+        <section class="hero-card" id="heroSection">
+            <div class="hero-visual" id="heroVisual">
+                <img id="heroImage" src="images/hotel-faro-3k.jpg" alt="Portugal Landschaft" class="hero-photo" loading="eager">
+                <div class="hero-scrim"></div>
+                <div class="hero-top-meta">
+                    <span class="hero-station-label" id="heroStationTag">STATION 01</span>
+                    <span class="hero-date-badge" id="heroDateTag">04.09. – 05.09.</span>
+                </div>
+                <div class="hero-overlay-content" id="heroOverlayContent">
+                    <h2 class="hero-heading" id="heroTitle">Anreise & Start in Faro</h2>
+                    <p class="hero-text" id="heroDesc">Parken in Weeze, Flug nach Faro, Mietwagenübernahme und erste Übernachtung direkt am Flughafen vor dem Roadtrip.</p>
+                </div>
+            </div>
+            <div class="hero-body" id="heroBody">
+                <div class="hero-hotel-card" id="heroHotelBanner">
+                    <div class="hotel-visual-mini">
+                        <img id="heroHotelThumb" src="images/hotel-faro-3k.jpg" alt="Unterkunft Foto" class="hotel-mini-img" loading="lazy">
+                    </div>
+                    <div class="hotel-content-mini">
+                        <div class="hotel-type-tag" id="heroHotelKicker">UNTERKUNFT DIESER STATION</div>
+                        <h4 class="hotel-title-mini" id="heroHotelName">Hotel 3K Aeropuerto Faro</h4>
+                        <p class="hotel-meta-mini" id="heroHotelMeta">1 Nacht • Doppelzimmer • Ca. 700 m vom Flughafen</p>
+                    </div>
+                    <div class="hotel-actions-group">
+                        <a id="heroHotelWebBtn" href="https://www.hotel3kfaro.com/en/" target="_blank" rel="noopener noreferrer" class="hotel-action-link hotel-web-link" title="Webseite öffnen">
+                            <svg class="svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                            <span>Webseite</span>
+                        </a>
+                        <a id="heroHotelMapsBtn" href="https://www.google.com/maps/search/?api=1&query=Hotel+3K+Faro+Aeroporto" target="_blank" rel="noopener noreferrer" class="hotel-action-link hotel-maps-link" title="In Google Maps öffnen">
+                            <svg class="svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <span>Maps</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Category Filter Tabs with Direct Flex Wrap -->
+        <section class="controls-bar" id="controlsBar">
+            <div class="category-filters" id="categoryTabs">
+                <button class="category-btn active" data-cat="all" id="catTabAll">
+                    <svg class="cat-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                    <span>Alle Einträge</span>
+                    <span class="cat-count" id="countAll"></span>
+                </button>
+                <button class="category-btn" data-cat="roadtrip" id="catTabRoadtrip">
+                    <svg class="cat-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+                    <span>Roadtrip</span>
+                    <span class="cat-count" id="countRoadtrip"></span>
+                </button>
+                <button class="category-btn" data-cat="highlights" id="catTabHighlights">
+                    <svg class="cat-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                    <span>Strände & Highlights</span>
+                    <span class="cat-count" id="countHighlights"></span>
+                </button>
+                <button class="category-btn" data-cat="activities" id="catTabActivities">
+                    <svg class="cat-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg>
+                    <span>Wandern & Rad</span>
+                    <span class="cat-count" id="countActivities"></span>
+                </button>
+                <button class="category-btn" data-cat="food" id="catTabFood">
+                    <svg class="cat-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+                    <span>Kulinarik & Cafés</span>
+                    <span class="cat-count" id="countFood"></span>
+                </button>
+            </div>
+        </section>
+        <!-- Cards Stream -->
+        <section class="spots-stream" id="spotsContainer" aria-live="polite">
+            <!-- Rendered by JS -->
+        </section>
+        <!-- Station Pagination Controls (Prev / Next Station) -->
+        <nav class="station-step-nav" id="stationStepNav" aria-label="Stationswechsel Navigation">
+            <button class="step-nav-btn prev-btn" id="prevStationBtn" disabled>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                <div class="step-btn-text">
+                    <span class="step-kicker">ZURÜCK</span>
+                    <strong class="step-title" id="prevStationTitle">—</strong>
+                </div>
+            </button>
+            <button class="step-nav-btn next-btn" id="nextStationBtn">
+                <div class="step-btn-text text-right">
+                    <span class="step-kicker">WEITER</span>
+                    <strong class="step-title" id="nextStationTitle">02 Zambujeira</strong>
+                </div>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+        </nav>
+    </main>
+    <!-- High-res Lightbox Modal -->
+    <div class="lightbox-backdrop" id="lightboxModal" role="dialog" aria-modal="true" aria-label="Bildvergrößerung">
+        <button class="lightbox-close" id="closeLightboxBtn" aria-label="Schließen">
+            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <div class="lightbox-viewport" id="lightboxViewport">
+            <img id="lightboxImage" src="" alt="Vollbild-Ansicht" class="lightbox-photo">
+            <div class="lightbox-title-bar" id="lightboxCaption"></div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
