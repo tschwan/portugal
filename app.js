@@ -1,4 +1,4 @@
-const STATION_KEYS = ['station-1', 'station-2', 'station-3', 'station-4', 'station-5'];
+const STATION_KEYS = ['station-1', 'station-2', 'station-3', 'station-4', 'station-5', 'guide'];
 
 const STATIONS_DATA = {
     "station-1": {
@@ -1602,16 +1602,402 @@ const STATIONS_DATA = {
     }
 };
 
+const GUIDE_DATA = {
+    hero: {
+        badge: "🇵🇹 PORTUGAL GUIDE • KULTUR & TIPPS",
+        title: "Mini-Reiseführer & Kultur-Guide",
+        dates: "Kultur • Genuss • Sprache",
+        heroImage: "images/hero-ponta-da-piedade.jpg",
+        description: "Dein charmanter Spickzettel für den Urlaub: Wichtige Vokabeln & Redewendungen, Zahlen, der portugiesische Kaffeekodex, die besten regionalen Spezialitäten aus Alentejo & Algarve, Alltags-Knigge und kuriose Fakten."
+    },
+    quickFacts: [
+        { icon: "☕", label: "Espresso-Preis", val: "ca. 0,80 – 1,00 €" },
+        { icon: "💶", label: "Trinkgeld", val: "5 – 10 % (bar üblich)" },
+        { icon: "🍷", label: "Erfrischung", val: "Vinho Verde eisgekühlt" },
+        { icon: "🍽️", label: "Couvert", val: "Zahlen nur was man isst" }
+    ],
+    sections: [
+        {
+            id: "guide-speech-rules",
+            category: "speech",
+            badge: "Aussprache-Regeln",
+            badgeClass: "badge-speech",
+            icon: "🗣️",
+            title: "Das kleine Aussprache-1x1",
+            fullWidth: true,
+            type: "pronunciation",
+            rules: [
+                "<strong>Das 'S' am Wortende:</strong> Wird weich wie ein deutsches 'Sch' gesprochen (z.B. <em>dois</em> = 'doisch', <em>adeus</em> = 'adeusch'). Klingt für Fremde anfangs fast ein bisschen slawisch!",
+                "<strong>Das 'O' am Wortende:</strong> Klingt fast immer wie ein kurzes, dumpfes 'U' (z.B. <em>obrigado</em> = 'obrigadu', <em>Porto</em> = 'purtu').",
+                "<strong>Obrigado vs. Obrigada:</strong> Männer sagen immer <em>Obrigado</em>, Frauen immer <em>Obrigada</em> – es bezieht sich stets auf das eigene Geschlecht des Sprechenden, nicht auf das Gegenüber!",
+                "<strong>Nasallaute (-ão / -ã):</strong> Wie ein durch die Nase gezogenes 'aung' gesprochen (z.B. <em>pão</em> = Brot, <em>não</em> = nein)."
+            ]
+        },
+        {
+            id: "guide-vocab-essentials",
+            category: "speech",
+            badge: "Wortschatz",
+            badgeClass: "badge-speech",
+            icon: "💬",
+            title: "Die wichtigsten Vokabeln & Redewendungen",
+            fullWidth: true,
+            type: "vocab",
+            subgroups: [
+                {
+                    title: "👋 Begrüßung & Höflichkeit",
+                    items: [
+                        { phrase: "Olá!", meaning: "Hallo! / Guten Tag (informell)" },
+                        { phrase: "Bom dia", meaning: "Guten Morgen / Guten Tag (vormittags)" },
+                        { phrase: "Boa tarde", meaning: "Guten Tag / Schönen Nachmittag (ab Mittag)" },
+                        { phrase: "Boa noite", meaning: "Guten Abend / Gute Nacht" },
+                        { phrase: "Por favor / Se faz favor", meaning: "Bitte (beim Bitten & Bestellen)" },
+                        { phrase: "Obrigado / Obrigada", meaning: "Danke!", note: "Männer sagen Obrigado, Frauen Obrigada" },
+                        { phrase: "De nada", meaning: "Bitte sehr / Gern geschehen" },
+                        { phrase: "Com licença", meaning: "Entschuldigung (beim Durchgehen / Ansprechen)" },
+                        { phrase: "Desculpe", meaning: "Entschuldigung (bei Versehen / Missgeschick)" },
+                        { phrase: "Até logo / Adeus", meaning: "Bis bald / Auf Wiedersehen" },
+                        { phrase: "Tudo bem?", meaning: "Alles gut? / Wie geht's?" },
+                        { phrase: "Tudo bem!", meaning: "Alles bestens!" },
+                        { phrase: "Sim / Não", meaning: "Ja / Nein" },
+                        { phrase: "Fala inglês?", meaning: "Sprechen Sie Englisch?" },
+                        { phrase: "Não compreendo", meaning: "Ich verstehe nicht" }
+                    ]
+                },
+                {
+                    title: "🍽️ Im Restaurant, Café & Bar",
+                    items: [
+                        { phrase: "A conta, por favor", meaning: "Die Rechnung, bitte!" },
+                        { phrase: "Está delicioso!", meaning: "Es ist köstlich! / Schmeckt hervorragend!" },
+                        { phrase: "Uma mesa para dois, por favor", meaning: "Ein Tisch für zwei Personen, bitte" },
+                        { phrase: "A ementa / O menu, por favor", meaning: "Die Speisekarte, bitte" },
+                        { phrase: "Um café / Uma bica", meaning: "Einen Espresso, bitte" },
+                        { phrase: "Um galão", meaning: "Einen Milchkaffee im hohen Glas" },
+                        { phrase: "Uma cerveja imperial", meaning: "Ein kleines gezapftes Bier (ca. 0,2l)" },
+                        { phrase: "Uma caneca", meaning: "Ein großes Bier vom Fass (ca. 0,5l)" },
+                        { phrase: "Um copo de vinho branco / tinto", meaning: "Ein Glas Weißwein / Rotwein" },
+                        { phrase: "Uma garrafa de água (sem gás / com gás)", meaning: "Eine Flasche Wasser (still / mit Kohlensäure)" },
+                        { phrase: "Pão e azeitonas", meaning: "Brot und Oliven (Couvert)" },
+                        { phrase: "Saúde!", meaning: "Zum Wohl! / Prost!" }
+                    ]
+                },
+                {
+                    title: "🧭 Unterwegs, Orientierung & Einkaufen",
+                    items: [
+                        { phrase: "Onde fica...?", meaning: "Wo befindet sich...?" },
+                        { phrase: "Onde é a praia / a casa de banho?", meaning: "Wo ist der Strand / die Toilette?" },
+                        { phrase: "Quanto custa?", meaning: "Wie viel kostet das?" },
+                        { phrase: "Posso pagar com cartão?", meaning: "Kann ich mit Karte zahlen?" },
+                        { phrase: "Aberto / Fechado", meaning: "Geöffnet / Geschlossen" },
+                        { phrase: "Entrada / Saída", meaning: "Eingang / Ausgang" },
+                        { phrase: "A praia / O mercado", meaning: "Der Strand / Der Markt" },
+                        { phrase: "A farmácia / O hospital", meaning: "Die Apotheke / Das Krankenhaus" },
+                        { phrase: "Socorro! / Ajuda!", meaning: "Hilfe! (im Notfall)" }
+                    ]
+                }
+            ]
+        },
+        {
+            id: "guide-numbers",
+            category: "speech",
+            badge: "Zahlen & Zählen",
+            badgeClass: "badge-speech",
+            icon: "🔢",
+            title: "Die Zahlen auf Portugiesisch (Números)",
+            fullWidth: true,
+            type: "numbers",
+            groups: [
+                {
+                    title: "1 bis 10 (Grundzahlen)",
+                    icon: "🌱",
+                    items: [
+                        { digit: "1", word: "um / uma", note: "männlich / weiblich" },
+                        { digit: "2", word: "dois / duas", note: "männlich / weiblich" },
+                        { digit: "3", word: "três" },
+                        { digit: "4", word: "quatro" },
+                        { digit: "5", word: "cinco" },
+                        { digit: "6", word: "seis" },
+                        { digit: "7", word: "sete" },
+                        { digit: "8", word: "oito" },
+                        { digit: "9", word: "nove" },
+                        { digit: "10", word: "dez" }
+                    ]
+                },
+                {
+                    title: "11 bis 20",
+                    icon: "🌿",
+                    items: [
+                        { digit: "11", word: "onze" },
+                        { digit: "12", word: "doze" },
+                        { digit: "13", word: "treze" },
+                        { digit: "14", word: "catorze" },
+                        { digit: "15", word: "quinze" },
+                        { digit: "16", word: "dezasseis" },
+                        { digit: "17", word: "dezassete" },
+                        { digit: "18", word: "dezoito" },
+                        { digit: "19", word: "dezanove" },
+                        { digit: "20", word: "vinte" }
+                    ]
+                },
+                {
+                    title: "Zehner & Große Zahlen",
+                    icon: "🌳",
+                    items: [
+                        { digit: "21", word: "vinte e um" },
+                        { digit: "30", word: "trinta" },
+                        { digit: "40", word: "quarenta" },
+                        { digit: "50", word: "cinquenta" },
+                        { digit: "60", word: "sessenta" },
+                        { digit: "70", word: "setenta" },
+                        { digit: "80", word: "oitenta" },
+                        { digit: "90", word: "noventa" },
+                        { digit: "100", word: "cem", note: "ab 101: cento e..." },
+                        { digit: "1.000", word: "mil" }
+                    ]
+                }
+            ]
+        },
+        {
+            id: "guide-coffee-interpreter",
+            category: "speech",
+            badge: "Kaffeekodex",
+            badgeClass: "badge-speech",
+            icon: "☕",
+            title: "Der portugiesische Kaffee-Dolmetscher",
+            fullWidth: true,
+            type: "coffee",
+            intro: "Kaffee ist in Portugal gelebte Kultur. Bestellt wird meist im Stehen an der Theke (*ao balcão*) für ca. 0,80 € bis 1,00 €. So bestellst du zielsicher wie ein Local:",
+            coffees: [
+                { name: "Bica / Um Café", ratio: "100% Espresso", desc: "Der kleine, pechschwarze, intensive Espresso mit dichter Crema. Das Nationalgetränk.", tip: "Einfach 'um café' bestellen." },
+                { name: "Café Pingado", ratio: "Espresso + Tropfen Milch", desc: "Espresso mit genau einem kleinen Tropfen ('pingo') kalter oder warmer Milch.", tip: "Mildert die Bitternote perfekt." },
+                { name: "Garoto", ratio: "Espresso + Milchschaum", desc: "Kleiner Espresso in der Miniaturtasse, mit cremigem Milchschaum aufgefüllt.", tip: "Wörtlich übersetzt 'kleiner Junge'." },
+                { name: "Galão", ratio: "1/4 Espresso + 3/4 Milch", desc: "Im hohen Glas serviert mit viel heißer Milch. Der portugiesische Latte Macchiato.", tip: "Der Frühstücks-Liebling zu Toast (*Tosta*)." },
+                { name: "Meia de Leite", ratio: "50% Kaffee + 50% Milch", desc: "Kaffee und heiße Milch zu gleichen Teilen in der großen Tasse serviert.", tip: "Ähnlich dem klassischen Café au Lait." },
+                { name: "Abatanado", ratio: "Espresso + heißes Wasser", desc: "Verlängerter Espresso in der großen Tasse. Perfekt als Filterkaffee-Ersatz.", tip: "Für alle, denen ein Espresso zu konzentriert ist." },
+                { name: "Carioca", ratio: "Sehr milder Espresso", desc: "Zweiter Durchlauf des Espressopulvers – extrem mild und leicht.", tip: "Ideal für den späten Nachmittag." },
+                { name: "Descafeinado", ratio: "Koffeinfrei", desc: "Jede Kaffeesorte kann problemlos entkoffeiniert bestellt werden.", tip: "Einfach 'um descafeinado' sagen." }
+            ]
+        },
+        {
+            id: "guide-food-cataplana",
+            category: "food",
+            badge: "Algarve Spezialität",
+            badgeClass: "badge-food",
+            icon: "🥘",
+            title: "Cataplana de Marisco",
+            type: "culinary",
+            region: "Algarve Küste",
+            sub: "Der Königseintopf im Kupfer-Muscheltopf",
+            desc: "Frische Meeresfrüchte (Garnelen, Venusmuscheln, Tintenfisch, Fischfilet) geschmort mit Zwiebeln, Paprika, Tomaten, Knoblauch, Weißwein und Koriander im traditionellen, luftdicht verschlossenen Kupferkessel.",
+            tip: "Wird am Tisch dampfend geöffnet. Unbedingt reichlich Brot zum Aufsaugen des göttlichen Suds bereithalten!"
+        },
+        {
+            id: "guide-food-porco-alentejana",
+            category: "food",
+            badge: "Alentejo Klassiker",
+            badgeClass: "badge-food",
+            icon: "🥩",
+            title: "Carne de Porco à Alentejana",
+            type: "culinary",
+            region: "Alentejo",
+            sub: "Die berühmte 'Surf & Turf'-Kombination",
+            desc: "Zarte Fleischwürfel vom iberischen Eichelschwein (*Porco Preto*), mariniert in Paprikapaste (*Massa de Pimentão*), Weißwein und Knoblauch. Kurz vor dem Servieren mit frischen Venusmuscheln (*Amêijoas*), Bratkartoffelwürfeln und Koriander in der Pfanne geschwenkt.",
+            tip: "Klingt im ersten Moment ungewohnt, ist aber eine harmonische Geschmacksexplosion!"
+        },
+        {
+            id: "guide-food-polvo",
+            category: "food",
+            badge: "Atlantik-Küche",
+            badgeClass: "badge-food",
+            icon: "🐙",
+            title: "Polvo à Lagareiro",
+            type: "culinary",
+            region: "Algarve & Alentejo",
+            sub: "Ofenfrischer Oktopus im Olivenöl-Bad",
+            desc: "Butterweich gegarter Tintenfisch, anschließend im heißen Ofen kross geröstet und in bestem portugiesischem Olivenöl mit reichlich Knoblauch serviert. Dazu gibt es *Batatas a Murro* (Kartoffeln, die vor dem Backen mit der Faust leicht 'angeboxt' werden).",
+            tip: "Ein absoluter Standard in jeder traditionellen Küsten-Tasca."
+        },
+        {
+            id: "guide-food-piripiri",
+            category: "food",
+            badge: "Kult-Klassiker",
+            badgeClass: "badge-food",
+            icon: "🍗",
+            title: "Frango da Guia (Piri-Piri Hähnchen)",
+            type: "culinary",
+            region: "Algarve (Guia / Albufeira)",
+            sub: "Knuspriges Minigrillhähnchen über Holzkohle",
+            desc: "Kleine, saftige Hähnchen werden flach aufgeklappt, über heißer Holzkohle gegrillt und mit feurigem Piri-Piri-Öl bepinselt. Dazu gibt es handgeschnittene Pommes und einen erfrischenden Tomaten-Zwiebel-Salat mit getrocknetem Oregano.",
+            tip: "Das Dorf Guia bei Albufeira gilt als Wiege des Piri-Piri-Hähnchens."
+        },
+        {
+            id: "guide-food-acorda",
+            category: "food",
+            badge: "Traditionsgericht",
+            badgeClass: "badge-food",
+            icon: "🍲",
+            title: "Açorda Alentejana",
+            type: "culinary",
+            region: "Alentejo",
+            sub: "Die aromatische Hirtensuppe mit Koriander",
+            desc: "Altes, rustikales Weißbrot wird mit einer heißen Brühe aus Knoblauch, frischem Koriander, Meersalz und feinstem Olivenöl übergossen und mit einem pochierten Ei gekrönt. Oft verfeinert mit Kabeljau (*Bacalhau*) oder Garnelen.",
+            tip: "Einfachste Zutaten, aber sensationell wärmend und geschmackvoll."
+        },
+        {
+            id: "guide-food-nata",
+            category: "food",
+            badge: "Kult-Süßspeise",
+            badgeClass: "badge-food",
+            icon: "🧁",
+            title: "Pastéis de Nata",
+            type: "culinary",
+            region: "Ganz Portugal",
+            sub: "Blätterteigtörtchen mit feiner Vanillecreme",
+            desc: "Die weltberühmten Törtchen aus knusprigem Blätterteig mit einer sahnigen Vanille-Pudding-Füllung, bei über 300°C im Ofen gebacken, bis die Oberfläche dunkel karamellisiert.",
+            tip: "Am besten lauwarm genießen und vor dem Essen mit Zimt (*Canela*) und Puderzucker bestreuen!"
+        },
+        {
+            id: "guide-food-drinks",
+            category: "food",
+            badge: "Weine & Liköre",
+            badgeClass: "badge-food",
+            icon: "🍷",
+            title: "Vinho Verde, Medronho & Co.",
+            type: "culinary",
+            region: "Portugal",
+            sub: "Die unverzichtbaren Begleiter im Glas",
+            desc: "<strong>Vinho Verde:</strong> Junger, fruchtig-spritziger Weißwein mit zarter Kohlensäure und geringem Alkoholgehalt (ideal für heiße Tage).<br><strong>Medronho:</strong> Der legendäre 'Feuerschnaps' der Algarve aus den roten Früchten des Erdbeerbaums.<br><strong>Ginjinha:</strong> Süßer Sauerkirschlikör, an Ständen oft im essbaren Schokobecher serviert.",
+            tip: "Medronho wird traditionell nach dem Abendessen als Digestif auf Kosten des Hauses gereicht."
+        },
+        {
+            id: "guide-knigge-rules",
+            category: "culture",
+            badge: "Alltags-Knigge",
+            badgeClass: "badge-culture",
+            icon: "📋",
+            title: "Dos & Don'ts im Portugal-Urlaub",
+            fullWidth: true,
+            type: "knigge",
+            rules: [
+                {
+                    type: "couvert",
+                    icon: "🥖",
+                    title: "Die 'Couvert-Regel' im Restaurant",
+                    text: "Brot, Oliven, Butter, Käse und Pasteten werden ungefragt auf den Tisch gestellt. Das ist <strong>kein</strong> kostenloser Gruß der Küche! Du bezahlst nur das, was du anrührst oder isst (meist 1,50–3,50 €). Was stehen bleibt, wird nicht berechnet.",
+                    rule: "👉 Faustregel: Möchtest du nichts davon, lass es unberührt stehen oder sag freundlich 'Não, obrigado'."
+                },
+                {
+                    type: "tips",
+                    icon: "💶",
+                    title: "Trinkgeld-Regeln (Gorjeta)",
+                    text: "Im Café/Pastelaria rundet man einfach um 20 bis 50 Cent auf oder lässt die Kupfermünzen liegen. Im Restaurant sind <strong>5 bis 10 %</strong> bei gutem Service üblich. Trinkgeld kann man bei Kartenzahlung oft nicht über das Gerät eingeben – halte stets ein paar Münzen bar parat.",
+                    rule: "👉 Faustregel: 5–10 % bar auf den Rechnungs-Teller legen."
+                },
+                {
+                    type: "toll",
+                    icon: "🛣️",
+                    title: "Elektronische Maut (Via Verde & SCUT)",
+                    text: "Auf der Autobahn A22 an der Algarve gibt es keine Mauthäuschen, sondern nur elektronische Kameras über der Fahrbahn. Mit dem Mietwagen-Transponder (bei EPI Rent a Car aktiviert) fährst du einfach durch – die Abrechnung erfolgt automatisch über die Kreditkarte.",
+                    rule: "👉 Faustregel: Transponder bei Mietwagenübernahme immer aktivieren lassen."
+                },
+                {
+                    type: "manners",
+                    icon: "🕒",
+                    title: "Essenszeiten & Höflichkeit",
+                    text: "Mittagessen (*Almoço*) ist zwischen 12:30 und 15:00 Uhr. Abendessen (*Jantar*) beginnt selten vor 19:30 Uhr; Portugiesen gehen meist zwischen 20:30 und 22:00 Uhr essen. Vor jeder Frage immer zuerst mit 'Bom dia' oder 'Boa tarde' grüßen.",
+                    rule: "👉 Faustregel: Immer zuerst auf Portugiesisch grüßen, danach auf Englisch weiterreden."
+                }
+            ]
+        },
+        {
+            id: "guide-fact-cork",
+            category: "facts",
+            badge: "Kork-Monopol",
+            badgeClass: "badge-facts",
+            icon: "🌳",
+            title: "Portugal ist Kork-Weltmeister",
+            type: "fact",
+            emoji: "🌳",
+            story: "Über 50 % der weltweiten Korkproduktion stammen aus Portugal, vor allem aus den weiten Korkeichen-Wäldern (*Montados*) des Alentejo. Eine Korkeiche darf erst ab 25 Jahren geschält werden – und danach nur alle 9 Jahre per Hand! Die geschälten Stämme bekommen eine weiße Jahreszahl aufgemalt.",
+            takeaway: "🌳 Korkeichen stehen unter strengem gesetzlichen Schutz und dürfen nicht gefällt werden."
+        },
+        {
+            id: "guide-fact-storks",
+            category: "facts",
+            badge: "Costa Vicentina Phänomen",
+            badgeClass: "badge-facts",
+            icon: "🪺",
+            title: "Die weltberühmten Klippenstörche",
+            type: "fact",
+            emoji: "🪺",
+            story: "Die Steilküste zwischen Zambujeira do Mar und dem Cabo de São Vicente ist der weltweit einzige bekannte Ort, an dem Weißstörche ihre Nester direkt auf spektakulären Felsnadeln im tosenden Atlantik bauen. Normalerweise nisten Störche im Binnenland.",
+            takeaway: "🪺 Halte bei Klippenwanderungen an der Costa Vicentina unbedingt Ausschau nach den Nestern!"
+        },
+        {
+            id: "guide-fact-nazare",
+            category: "facts",
+            badge: "Naturwunder",
+            badgeClass: "badge-facts",
+            icon: "🌊",
+            title: "Die 30-Meter-Monsterwellen von Nazaré",
+            type: "fact",
+            emoji: "🌊",
+            story: "Vor der portugiesischen Küste liegt ein gigantischer Tiefsee-Canyon, der bis zu 5.000 Meter tief ist. Er wirkt wie ein physikalischer Verstärker-Trichter und erzeugt im Herbst und Winter die höchsten gesurften Wellen unseres Planeten (bis zu 30 Meter hoch).",
+            takeaway: "🌊 Hier wurden sämtliche Big-Wave-Weltrekorde der Menschheit aufgestellt."
+        },
+        {
+            id: "guide-fact-saudade",
+            category: "facts",
+            badge: "Kulturgefühl",
+            badgeClass: "badge-facts",
+            icon: "💙",
+            title: "Das unübersetzbare Gefühl: 'Saudade'",
+            type: "fact",
+            emoji: "💙",
+            story: "'Saudade' beschreibt ein tiefes Gefühl von melancholischer Sehnsucht nach einem geliebten Menschen, Ort oder Moment, der vergangen oder weit weg ist – vermischt mit Hoffnung auf Wiedersehen. Sie ist das Herzstück des portugiesischen Fado.",
+            takeaway: "💙 Wenn du am Abreisetag wehmütig aufs Meer schaust, spürst du pure Saudade."
+        },
+        {
+            id: "guide-fact-alliance",
+            category: "facts",
+            badge: "Geschichtswissen",
+            badgeClass: "badge-facts",
+            icon: "📜",
+            title: "Das älteste Bündnis der Weltgeschichte",
+            type: "fact",
+            emoji: "📜",
+            story: "Der Vertrag von Windsor zwischen Portugal und England wurde im Jahr 1386 besiegelt – und ist mit über 640 Jahren das älteste ununterbrochen bestehende diplomatische und militärische Bündnis der Welt.",
+            takeaway: "📜 Deshalb haben Tee, Portwein und viele Traditionen eine jahrhundertealte Verbindung."
+        },
+        {
+            id: "guide-fact-coffee",
+            category: "facts",
+            badge: "Kaffeelust",
+            badgeClass: "badge-facts",
+            icon: "☕",
+            title: "Kaffeekonsum-Weltspitze",
+            type: "fact",
+            emoji: "☕",
+            story: "Portugiesen trinken im Schnitt 4 bis 5 Kaffees am Tag. Die allgegenwärtige Kultmarke 'Delta Cafés' wurde 1961 im Alentejo (Campo Maior) gegründet und ist der unangefochtene Nationalstolz aller Kaffeeliebhaber.",
+            takeaway: "☕ Guter Kaffee ist in Portugal ein gesetzlich fast heiliges Grundrecht."
+        }
+    ]
+};
+
 class TravelApp {
     constructor() {
         this.currentStationKey = 'station-1';
         this.currentCategory = 'all';
+        const hash = window.location.hash.replace('#', '');
+        if (hash && STATION_KEYS.includes(hash)) {
+            this.currentStationKey = hash;
+        }
         this.initDOMElements();
         this.bindEvents();
         this.renderStation();
     }
     initDOMElements() {
         this.stationPills = document.querySelectorAll('.station-pill');
+        this.categoryTabs = document.getElementById('categoryTabs');
         this.categoryButtons = document.querySelectorAll('.category-btn');
         this.controlsBar = document.getElementById('controlsBar');
         this.spotsContainer = document.getElementById('spotsContainer');
@@ -1621,11 +2007,6 @@ class TravelApp {
         this.heroTitle = document.getElementById('heroTitle');
         this.heroDesc = document.getElementById('heroDesc');
         this.heroHotelBanner = document.getElementById('heroHotelBanner');
-        this.heroHotelThumb = document.getElementById('heroHotelThumb');
-        this.heroHotelName = document.getElementById('heroHotelName');
-        this.heroHotelMeta = document.getElementById('heroHotelMeta');
-        this.heroHotelWebBtn = document.getElementById('heroHotelWebBtn');
-        this.heroHotelMapsBtn = document.getElementById('heroHotelMapsBtn');
         this.prevStationBtn = document.getElementById('prevStationBtn');
         this.nextStationBtn = document.getElementById('nextStationBtn');
         this.prevStationTitle = document.getElementById('prevStationTitle');
@@ -1634,11 +2015,6 @@ class TravelApp {
         this.lightboxImage = document.getElementById('lightboxImage');
         this.lightboxCaption = document.getElementById('lightboxCaption');
         this.closeLightboxBtn = document.getElementById('closeLightboxBtn');
-        this.countAll = document.getElementById('countAll');
-        this.countRoadtrip = document.getElementById('countRoadtrip');
-        this.countHighlights = document.getElementById('countHighlights');
-        this.countActivities = document.getElementById('countActivities');
-        this.countFood = document.getElementById('countFood');
     }
     bindEvents() {
         this.stationPills.forEach(pill => {
@@ -1646,14 +2022,6 @@ class TravelApp {
                 const stationKey = pill.dataset.station;
                 if (stationKey && stationKey !== this.currentStationKey) {
                     this.setActiveStation(stationKey);
-                }
-            });
-        });
-        this.categoryButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const cat = btn.dataset.cat;
-                if (cat && cat !== this.currentCategory) {
-                    this.setActiveCategory(cat);
                 }
             });
         });
@@ -1687,21 +2055,35 @@ class TravelApp {
                 this.closeLightbox();
             }
         });
+        window.addEventListener('hashchange', () => {
+            const hash = window.location.hash.replace('#', '');
+            if (hash && STATION_KEYS.includes(hash) && hash !== this.currentStationKey) {
+                this.setActiveStation(hash);
+            }
+        });
     }
     setActiveStation(stationKey) {
         this.currentStationKey = stationKey;
         this.currentCategory = 'all';
         this.stationPills.forEach(p => p.classList.toggle('active', p.dataset.station === stationKey));
-        this.categoryButtons.forEach(b => b.classList.toggle('active', b.dataset.cat === 'all'));
+        window.location.hash = stationKey;
         this.renderStation();
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
     setActiveCategory(category) {
         this.currentCategory = category;
         this.categoryButtons.forEach(b => b.classList.toggle('active', b.dataset.cat === category));
-        this.renderSpots();
+        if (this.currentStationKey === 'guide') {
+            this.renderGuideGrid();
+        } else {
+            this.renderSpots();
+        }
     }
     renderStation() {
+        if (this.currentStationKey === 'guide') {
+            this.renderGuideView();
+            return;
+        }
         const station = STATIONS_DATA[this.currentStationKey];
         if (!station) return;
         this.heroImage.src = station.heroImage;
@@ -1710,18 +2092,31 @@ class TravelApp {
         this.heroTitle.textContent = station.title;
         this.heroDesc.textContent = station.description;
 
-        this.heroHotelThumb.src = station.hotel.image;
-        this.heroHotelName.textContent = station.hotel.name;
-        this.heroHotelMeta.textContent = station.hotel.meta;
-        if (station.hotel.website) {
-            this.heroHotelWebBtn.href = station.hotel.website;
-            this.heroHotelWebBtn.style.display = 'inline-flex';
-        } else {
-            this.heroHotelWebBtn.style.display = 'none';
-        }
-        this.heroHotelMapsBtn.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(station.hotel.mapsQuery)}`;
+        this.heroHotelBanner.innerHTML = `
+            <div class="hotel-visual-mini">
+                <img id="heroHotelThumb" src="${station.hotel.image}" alt="Unterkunft Foto" class="hotel-mini-img" loading="lazy">
+            </div>
+            <div class="hotel-content-mini">
+                <div class="hotel-type-tag" id="heroHotelKicker">UNTERKUNFT DIESER STATION</div>
+                <h4 class="hotel-title-mini" id="heroHotelName">${station.hotel.name}</h4>
+                <p class="hotel-meta-mini" id="heroHotelMeta">${station.hotel.meta}</p>
+            </div>
+            <div class="hotel-actions-group">
+                ${station.hotel.website ? `
+                    <a id="heroHotelWebBtn" href="${station.hotel.website}" target="_blank" rel="noopener noreferrer" class="hotel-action-link hotel-web-link" title="Webseite öffnen">
+                        <svg class="svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        <span>Webseite</span>
+                    </a>
+                ` : ''}
+                <a id="heroHotelMapsBtn" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(station.hotel.mapsQuery)}" target="_blank" rel="noopener noreferrer" class="hotel-action-link hotel-maps-link" title="In Google Maps öffnen">
+                    <svg class="svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                    <span>Maps</span>
+                </a>
+            </div>
+        `;
+        this.heroHotelBanner.removeAttribute('style');
 
-        // Update category counts & visibility
+        this.updateCategoryFilterUI();
         if (this.currentStationKey === 'station-1' || this.currentStationKey === 'station-5') {
             this.controlsBar.style.display = 'none';
         } else {
@@ -1729,26 +2124,130 @@ class TravelApp {
             this.updateCategoryCounts(station.spots);
         }
 
-        // Update Prev / Next navigation buttons
         const currentIndex = STATION_KEYS.indexOf(this.currentStationKey);
         if (currentIndex > 0) {
             this.prevStationBtn.disabled = false;
             const prevStation = STATIONS_DATA[STATION_KEYS[currentIndex - 1]];
-            this.prevStationTitle.textContent = prevStation.badge.split(' • ')[0];
+            this.prevStationTitle.textContent = prevStation ? prevStation.badge.split(' • ')[0] : '—';
         } else {
             this.prevStationBtn.disabled = true;
             this.prevStationTitle.textContent = '—';
         }
         if (currentIndex < STATION_KEYS.length - 1) {
             this.nextStationBtn.disabled = false;
-            const nextStation = STATIONS_DATA[STATION_KEYS[currentIndex + 1]];
-            this.nextStationTitle.textContent = nextStation.badge.split(' • ')[0];
+            const nextKey = STATION_KEYS[currentIndex + 1];
+            if (nextKey === 'guide') {
+                this.nextStationTitle.textContent = '🇵🇹 Guide';
+            } else {
+                const nextStation = STATIONS_DATA[nextKey];
+                this.nextStationTitle.textContent = nextStation ? nextStation.badge.split(' • ')[0] : '—';
+            }
         } else {
             this.nextStationBtn.disabled = true;
             this.nextStationTitle.textContent = '—';
         }
 
         this.renderSpots();
+    }
+    renderGuideView() {
+        this.heroImage.src = GUIDE_DATA.hero.heroImage;
+        this.heroStationTag.textContent = GUIDE_DATA.hero.badge;
+        this.heroDateTag.textContent = GUIDE_DATA.hero.dates;
+        this.heroTitle.textContent = GUIDE_DATA.hero.title;
+        this.heroDesc.textContent = GUIDE_DATA.hero.description;
+
+        this.heroHotelBanner.innerHTML = `
+            <div class="guide-quick-banner">
+                ${GUIDE_DATA.quickFacts.map(q => `
+                    <div class="guide-quick-item">
+                        <span class="guide-quick-icon">${q.icon}</span>
+                        <div class="guide-quick-text">
+                            <span class="guide-quick-label">${q.label}</span>
+                            <strong class="guide-quick-val">${q.val}</strong>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+        this.heroHotelBanner.style.padding = '0';
+        this.heroHotelBanner.style.background = 'transparent';
+        this.heroHotelBanner.style.border = 'none';
+        this.heroHotelBanner.style.boxShadow = 'none';
+
+        this.controlsBar.style.display = 'block';
+        this.updateCategoryFilterUI();
+
+        this.prevStationBtn.disabled = false;
+        const prevStation = STATIONS_DATA['station-5'];
+        this.prevStationTitle.textContent = prevStation.badge.split(' • ')[0];
+        this.nextStationBtn.disabled = true;
+        this.nextStationTitle.textContent = '—';
+
+        this.renderGuideGrid();
+    }
+    updateCategoryFilterUI() {
+        const isGuide = this.currentStationKey === 'guide';
+        if (isGuide) {
+            this.categoryTabs.innerHTML = `
+                <button class="category-btn ${this.currentCategory === 'all' ? 'active' : ''}" data-cat="all">
+                    <span>Alle Themen</span>
+                </button>
+                <button class="category-btn ${this.currentCategory === 'speech' ? 'active' : ''}" data-cat="speech">
+                    <span>🗣️ Sprache & Kaffee</span>
+                </button>
+                <button class="category-btn ${this.currentCategory === 'food' ? 'active' : ''}" data-cat="food">
+                    <span>🍲 Kulinarik & Drinks</span>
+                </button>
+                <button class="category-btn ${this.currentCategory === 'culture' ? 'active' : ''}" data-cat="culture">
+                    <span>📋 Knigge & Alltag</span>
+                </button>
+                <button class="category-btn ${this.currentCategory === 'facts' ? 'active' : ''}" data-cat="facts">
+                    <span>🤓 Kuriose Fakten</span>
+                </button>
+            `;
+        } else {
+            this.categoryTabs.innerHTML = `
+                <button class="category-btn ${this.currentCategory === 'all' ? 'active' : ''}" data-cat="all" id="catTabAll">
+                    <svg class="cat-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                    <span>Alle Einträge</span>
+                    <span class="cat-count" id="countAll"></span>
+                </button>
+                <button class="category-btn ${this.currentCategory === 'roadtrip' ? 'active' : ''}" data-cat="roadtrip" id="catTabRoadtrip">
+                    <svg class="cat-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+                    <span>Roadtrip</span>
+                    <span class="cat-count" id="countRoadtrip"></span>
+                </button>
+                <button class="category-btn ${this.currentCategory === 'highlights' ? 'active' : ''}" data-cat="highlights" id="catTabHighlights">
+                    <svg class="cat-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                    <span>Strände & Highlights</span>
+                    <span class="cat-count" id="countHighlights"></span>
+                </button>
+                <button class="category-btn ${this.currentCategory === 'activities' ? 'active' : ''}" data-cat="activities" id="catTabActivities">
+                    <svg class="cat-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg>
+                    <span>Wandern & Rad</span>
+                    <span class="cat-count" id="countActivities"></span>
+                </button>
+                <button class="category-btn ${this.currentCategory === 'food' ? 'active' : ''}" data-cat="food" id="catTabFood">
+                    <svg class="cat-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+                    <span>Kulinarik & Cafés</span>
+                    <span class="cat-count" id="countFood"></span>
+                </button>
+            `;
+            this.countAll = document.getElementById('countAll');
+            this.countRoadtrip = document.getElementById('countRoadtrip');
+            this.countHighlights = document.getElementById('countHighlights');
+            this.countActivities = document.getElementById('countActivities');
+            this.countFood = document.getElementById('countFood');
+        }
+        this.categoryButtons = this.categoryTabs.querySelectorAll('.category-btn');
+        this.categoryButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const cat = btn.dataset.cat;
+                if (cat && cat !== this.currentCategory) {
+                    this.setActiveCategory(cat);
+                }
+            });
+        });
     }
     updateCategoryCounts(spots) {
         const counts = { all: spots.length, roadtrip: 0, highlights: 0, activities: 0, food: 0 };
@@ -1760,7 +2259,6 @@ class TravelApp {
         if (this.countHighlights) this.countHighlights.textContent = counts.highlights;
         if (this.countActivities) this.countActivities.textContent = counts.activities;
         if (this.countFood) this.countFood.textContent = counts.food;
-
         this.categoryButtons.forEach(btn => {
             const cat = btn.dataset.cat;
             const count = counts[cat] || 0;
@@ -1787,15 +2285,11 @@ class TravelApp {
         let html = '';
         filtered.forEach(spot => {
             const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(spot.mapsQuery || spot.title)}`;
-            
-            // Bullets
             const bulletsHtml = spot.bullets && spot.bullets.length > 0 ? `
                 <ul class="spot-highlights-box">
                     ${spot.bullets.map(b => `<li>${b}</li>`).join('')}
                 </ul>
             ` : '';
-
-            // Sections (Der Vibe, Auf dem Teller, Warum hin?, Timing etc.)
             let sectionsHtml = '';
             if (spot.sections && spot.sections.length > 0) {
                 sectionsHtml = `
@@ -1811,8 +2305,6 @@ class TravelApp {
                     </div>
                 `;
             }
-
-            // Timeline Steps (for Roadtrip Tage 1, 5, 9) - Expandable Box
             let timelineHtml = '';
             if (spot.timeline && spot.timeline.length > 0) {
                 const stepCount = spot.timeline.length;
@@ -1861,8 +2353,6 @@ class TravelApp {
                     </details>
                 `;
             }
-
-            // Media frame
             const mediaHtml = spot.image ? `
                 <div class="spot-media-frame">
                     <img src="${spot.image}" alt="${spot.title}" class="spot-photo" data-img="${spot.image}" data-caption="${spot.title}" loading="lazy">
@@ -1875,16 +2365,12 @@ class TravelApp {
                     ${spot.badges ? spot.badges.map(b => `<span class="spot-badge-pill">${b}</span>`).join('') : ''}
                 </div>
             `;
-
-            // Website button
             const webBtnHtml = spot.website ? `
                 <a href="${spot.website}" target="_blank" rel="noopener noreferrer" class="action-pill-web">
                     <svg class="svg-icon-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
                     <span>Webseite</span>
                 </a>
             ` : '';
-
-            // Card footer (omitted for multi-stop roadtrips to avoid confusion, since every stop has its own precise map link)
             const cardBarHtml = spot.category !== 'roadtrip' ? `
                 <div class="spot-card-bar">
                     <div class="spot-location-info">
@@ -1900,7 +2386,6 @@ class TravelApp {
                     </div>
                 </div>
             ` : '';
-
             html += `
                 <article class="spot-card" id="card-${spot.id}">
                     ${mediaHtml}
@@ -1918,6 +2403,142 @@ class TravelApp {
         });
         this.spotsContainer.innerHTML = html;
         this.attachSpotEvents();
+    }
+    renderGuideGrid() {
+        const filteredSections = GUIDE_DATA.sections.filter(sec => {
+            if (this.currentCategory !== 'all' && sec.category !== this.currentCategory) return false;
+            return true;
+        });
+        if (filteredSections.length === 0) {
+            this.spotsContainer.innerHTML = `
+                <div class="empty-stream-card">
+                    <div class="empty-title">Keine Einträge in dieser Kategorie</div>
+                    <div class="empty-desc">Wähle "Alle Themen", um den kompletten Guide zu sehen.</div>
+                </div>
+            `;
+            return;
+        }
+        let gridHtml = '<div class="guide-grid">';
+        filteredSections.forEach(sec => {
+            const fullClass = sec.fullWidth ? 'guide-card-full' : '';
+            let bodyHtml = '';
+            if (sec.type === 'pronunciation') {
+                bodyHtml = `
+                    <div class="pronunciation-rule-box">
+                        <div class="rule-title">
+                            <span>💡</span>
+                            <span>Die 4 goldenen Ausspracheregeln</span>
+                        </div>
+                        <ul class="rule-list">
+                            ${sec.rules.map(r => `<li>${r}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+            } else if (sec.type === 'vocab') {
+                bodyHtml = sec.subgroups.map(sg => `
+                    <div class="vocab-subgroup-title">${sg.title}</div>
+                    <div class="vocab-grid">
+                        ${sg.items.map(item => `
+                            <div class="vocab-item">
+                                <span class="vocab-phrase">${item.phrase}</span>
+                                <span class="vocab-meaning">${item.meaning}</span>
+                                ${item.note ? `<span class="vocab-note">💡 ${item.note}</span>` : ''}
+                            </div>
+                        `).join('')}
+                    </div>
+                `).join('');
+            } else if (sec.type === 'numbers') {
+                bodyHtml = `
+                    <div class="numbers-sections-grid">
+                        ${sec.groups.map(g => `
+                            <div class="numbers-group">
+                                <div class="numbers-group-title">
+                                    <span>${g.icon}</span>
+                                    <span>${g.title}</span>
+                                </div>
+                                <div class="numbers-list">
+                                    ${g.items.map(num => `
+                                        <div class="number-item-row">
+                                            <span class="number-digit">${num.digit}</span>
+                                            <span class="number-word">${num.word}</span>
+                                            ${num.note ? `<span class="number-note">${num.note}</span>` : ''}
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            } else if (sec.type === 'coffee') {
+                bodyHtml = `
+                    <p class="spot-lead-text" style="margin-bottom:12px;">${sec.intro}</p>
+                    <div class="coffee-grid">
+                        ${sec.coffees.map(c => `
+                            <div class="coffee-card">
+                                <div class="coffee-top">
+                                    <span class="coffee-name">${c.name}</span>
+                                    <span class="coffee-ratio-pill">${c.ratio}</span>
+                                </div>
+                                <p class="coffee-desc">${c.desc}</p>
+                                <div class="coffee-tip">💡 ${c.tip}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            } else if (sec.type === 'culinary') {
+                bodyHtml = `
+                    <div class="culinary-card-content">
+                        <span class="culinary-region-badge">📍 ${sec.region}</span>
+                        <h4 class="culinary-dish-title">${sec.title}</h4>
+                        <span class="culinary-dish-sub">${sec.sub}</span>
+                        <p class="culinary-desc">${sec.desc}</p>
+                        <div class="culinary-highlight-tip"><strong>Gourmet-Tipp:</strong> ${sec.tip}</div>
+                    </div>
+                `;
+            } else if (sec.type === 'knigge') {
+                bodyHtml = `
+                    <div class="knigge-card-list">
+                        ${sec.rules.map(r => `
+                            <div class="knigge-item ${r.type}">
+                                <div class="knigge-item-title">
+                                    <span>${r.icon}</span>
+                                    <strong>${r.title}</strong>
+                                </div>
+                                <p class="knigge-item-text">${r.text}</p>
+                                <div class="knigge-golden-rule">${r.rule}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            } else if (sec.type === 'fact') {
+                bodyHtml = `
+                    <div class="fact-box">
+                        <div class="fact-header">
+                            <span class="fact-emoji">${sec.emoji}</span>
+                            <h4 class="fact-title">${sec.title}</h4>
+                        </div>
+                        <p class="fact-story">${sec.story}</p>
+                        <div class="fact-takeaway">${sec.takeaway}</div>
+                    </div>
+                `;
+            }
+            gridHtml += `
+                <article class="guide-card ${fullClass}" id="${sec.id}">
+                    <div class="guide-card-header">
+                        <div class="guide-card-title-group">
+                            <span class="guide-card-icon">${sec.icon}</span>
+                            <h3 class="guide-card-title">${sec.title}</h3>
+                        </div>
+                        <span class="guide-badge ${sec.badgeClass}">${sec.badge}</span>
+                    </div>
+                    <div class="guide-card-body">
+                        ${bodyHtml}
+                    </div>
+                </article>
+            `;
+        });
+        gridHtml += '</div>';
+        this.spotsContainer.innerHTML = gridHtml;
     }
     attachSpotEvents() {
         this.spotsContainer.querySelectorAll('.spot-photo').forEach(img => {
@@ -1941,3 +2562,4 @@ class TravelApp {
 document.addEventListener('DOMContentLoaded', () => {
     window.app = new TravelApp();
 });
+

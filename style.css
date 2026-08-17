@@ -105,13 +105,13 @@ body {
     font-weight: 500;
     letter-spacing: 0.01em;
 }
-/* 5-Station Grid Segmented Bar */
+/* 6-Tab Grid Segmented Bar */
 .station-segmented-bar {
     max-width: 960px;
     margin: 0 auto;
     padding: 4px 12px 10px;
     display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
     gap: 5px;
     width: 100%;
 }
@@ -146,6 +146,17 @@ body {
     border-color: var(--ocean-dark);
     box-shadow: 0 4px 14px rgba(21, 57, 75, 0.25);
 }
+.station-pill.guide-pill {
+    border-color: rgba(200, 90, 50, 0.35);
+    background: linear-gradient(180deg, #ffffff 0%, #fdf8f4 100%);
+}
+.station-pill.guide-pill:hover {
+    border-color: var(--terracotta);
+}
+.station-pill.guide-pill.active {
+    background: linear-gradient(135deg, var(--ocean) 0%, #1c4b63 100%);
+    border-color: var(--ocean-dark);
+}
 .pill-number {
     font-size: 11px;
     font-weight: 700;
@@ -155,9 +166,17 @@ body {
     border-radius: 4px;
     line-height: 1;
 }
+.pill-number.guide-flag {
+    background: transparent;
+    padding: 0;
+    font-size: 13px;
+}
 .station-pill.active .pill-number {
     background: rgba(255, 255, 255, 0.2);
     color: #ffffff;
+}
+.station-pill.active .pill-number.guide-flag {
+    background: transparent;
 }
 .pill-text-group {
     display: flex;
@@ -1037,6 +1056,438 @@ body {
 .lightbox-close:hover {
     background: rgba(255, 255, 255, 0.4);
 }
+/* Guide View Component Styles */
+.guide-quick-banner {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 16px;
+    background: var(--surface-card);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-card);
+    box-shadow: var(--shadow-subtle);
+    width: 100%;
+}
+.guide-quick-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 4px 6px;
+}
+.guide-quick-icon {
+    font-size: 24px;
+    line-height: 1;
+    flex-shrink: 0;
+}
+.guide-quick-text {
+    display: flex;
+    flex-direction: column;
+}
+.guide-quick-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--terracotta);
+}
+.guide-quick-val {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+.guide-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 18px;
+    margin-bottom: 24px;
+}
+.guide-card-full {
+    grid-column: 1 / -1;
+}
+.guide-card {
+    background: var(--surface-card);
+    border: 1px solid var(--border-card);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+.guide-card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
+}
+.guide-card-header {
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border-light);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    background: var(--surface-subtle);
+}
+.guide-card-title-group {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+.guide-card-icon {
+    font-size: 20px;
+    line-height: 1;
+}
+.guide-card-title {
+    font-family: var(--font-heading);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+.guide-badge {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: var(--radius-full);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+}
+.badge-speech {
+    background: var(--ocean-light);
+    color: var(--ocean);
+    border: 1px solid rgba(21, 57, 75, 0.15);
+}
+.badge-food {
+    background: var(--terracotta-light);
+    color: var(--terracotta-dark);
+    border: 1px solid rgba(200, 90, 50, 0.2);
+}
+.badge-culture {
+    background: var(--gold-light);
+    color: #92580a;
+    border: 1px solid rgba(201, 136, 42, 0.25);
+}
+.badge-facts {
+    background: var(--olive-light);
+    color: var(--olive);
+    border: 1px solid rgba(43, 110, 63, 0.2);
+}
+.guide-card-body {
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex: 1;
+}
+.pronunciation-rule-box {
+    background: var(--surface-subtle);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.rule-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ocean);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.rule-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 0;
+    margin: 0;
+}
+.rule-list li {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+    padding-left: 12px;
+    position: relative;
+}
+.rule-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--terracotta);
+    font-weight: bold;
+}
+.vocab-subgroup-title {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--ocean);
+    margin-top: 6px;
+    margin-bottom: 2px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.vocab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 10px;
+}
+.vocab-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px 14px;
+    background: #ffffff;
+    border: 1px solid var(--border-card);
+    border-radius: var(--radius-md);
+    gap: 3px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.vocab-item:hover {
+    border-color: var(--ocean);
+    box-shadow: var(--shadow-subtle);
+}
+.vocab-phrase {
+    font-weight: 700;
+    font-size: 15.5px;
+    color: var(--ocean);
+    line-height: 1.25;
+}
+.vocab-meaning {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.35;
+}
+.vocab-note {
+    font-size: 11.5px;
+    color: var(--terracotta-dark);
+    font-style: italic;
+}
+.numbers-sections-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+}
+.numbers-group {
+    background: var(--surface-subtle);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+.numbers-group-title {
+    font-size: 12.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--ocean);
+    border-bottom: 1px solid var(--border-light);
+    padding-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.number-item-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 5px 8px;
+    border-radius: var(--radius-sm);
+    font-size: 13.5px;
+    gap: 8px;
+    background: #ffffff;
+    border: 1px solid rgba(220, 210, 195, 0.4);
+}
+.number-digit {
+    font-weight: 700;
+    color: var(--terracotta);
+    font-family: var(--font-heading);
+    min-width: 28px;
+}
+.number-word {
+    font-weight: 600;
+    color: var(--text-primary);
+    flex: 1;
+}
+.number-note {
+    font-size: 11.5px;
+    color: var(--text-tertiary);
+}
+.coffee-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+}
+.coffee-card {
+    background: var(--surface-subtle);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    transition: transform 0.2s, border-color 0.2s;
+}
+.coffee-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-2px);
+}
+.coffee-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.coffee-name {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--ocean);
+}
+.coffee-ratio-pill {
+    font-size: 10.5px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: var(--radius-full);
+    background: var(--gold-light);
+    color: var(--gold);
+    border: 1px solid rgba(201, 136, 42, 0.2);
+}
+.coffee-desc {
+    font-size: 12.5px;
+    color: var(--text-secondary);
+    line-height: 1.35;
+}
+.coffee-tip {
+    font-size: 11px;
+    color: var(--text-tertiary);
+    border-top: 1px dashed var(--border-light);
+    padding-top: 5px;
+}
+.knigge-card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.knigge-item {
+    background: #ffffff;
+    border: 1px solid var(--border-card);
+    border-left-width: 4px;
+    border-radius: var(--radius-md);
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.knigge-item.couvert {
+    border-left-color: var(--terracotta);
+}
+.knigge-item.tips {
+    border-left-color: var(--olive);
+}
+.knigge-item.toll {
+    border-left-color: var(--ocean);
+}
+.knigge-item.manners {
+    border-left-color: var(--gold);
+}
+.knigge-item-title {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+.knigge-item-text {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.45;
+}
+.knigge-golden-rule {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--ocean);
+    background: var(--ocean-light);
+    padding: 5px 8px;
+    border-radius: var(--radius-sm);
+    margin-top: 3px;
+}
+.culinary-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.culinary-region-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--terracotta);
+}
+.culinary-dish-title {
+    font-family: var(--font-heading);
+    font-size: 16.5px;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.2;
+}
+.culinary-dish-sub {
+    font-size: 12.5px;
+    color: var(--text-tertiary);
+    font-style: italic;
+    margin-top: -5px;
+}
+.culinary-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.45;
+}
+.culinary-highlight-tip {
+    background: var(--surface-subtle);
+    border-radius: var(--radius-sm);
+    padding: 7px 10px;
+    font-size: 12px;
+    color: var(--text-primary);
+    border-left: 3px solid var(--terracotta);
+}
+.fact-box {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+.fact-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.fact-emoji {
+    font-size: 22px;
+    line-height: 1;
+}
+.fact-title {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+.fact-story {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.45;
+}
+.fact-takeaway {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--olive);
+    background: var(--olive-light);
+    padding: 5px 8px;
+    border-radius: var(--radius-sm);
+}
 @media (max-width: 480px) {
     .header-inner {
         padding: 10px 12px 6px;
@@ -1049,19 +1500,20 @@ body {
         padding: 4px 8px;
     }
     .station-segmented-bar {
-        padding: 2px 8px 8px;
-        gap: 3px;
+        padding: 2px 6px 8px;
+        gap: 2.5px;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
     }
     .station-pill {
-        padding: 6px 2px;
-        border-radius: 9px;
+        padding: 5px 1px;
+        border-radius: 8px;
     }
     .station-pill .pill-number {
-        font-size: 10.5px;
-        padding: 1px 4px;
+        font-size: 9.5px;
+        padding: 1px 3px;
     }
     .station-pill .pill-title {
-        font-size: 11px;
+        font-size: 10px;
     }
     .station-pill .pill-dates {
         display: none;
@@ -1102,5 +1554,35 @@ body {
     }
     .roadtrip-summary-badge .roadtrip-badge-label {
         display: none;
+    }
+    .guide-quick-banner {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        padding: 10px 12px;
+    }
+    .guide-quick-item {
+        gap: 8px;
+        padding: 2px;
+    }
+    .guide-quick-icon {
+        font-size: 20px;
+    }
+    .guide-quick-label {
+        font-size: 10px;
+    }
+    .guide-quick-val {
+        font-size: 12.5px;
+    }
+    .guide-grid {
+        grid-template-columns: 1fr;
+    }
+    .vocab-grid {
+        grid-template-columns: 1fr;
+    }
+    .numbers-sections-grid {
+        grid-template-columns: 1fr;
+    }
+    .coffee-grid {
+        grid-template-columns: 1fr;
     }
 }
